@@ -39,3 +39,24 @@ ou
 ```bash
 java -jar springBootBootCamp-0.0.1-SNAPSHOT.jar --server.port=8085
 ```
+
+## Configuração com Variáveis de Ambiente
+Podem ser injetadas através de interpolação da anotação `@Value("${String}")`
+
+- Para realizar o export comum de variável em ambientes `UNIX`:
+    ```bash
+    export ENV_DB_URL=jdbc:h2:mem:db;DB_CLOSE_DELAY=-1
+    ```
+- Para realizar o export em `Windows`, utilize as variáveis de ambiente
+
+### Anotação `@Value("${String}")`
+- Injeção
+    ```java
+    @Value("${String}")
+    ```
+- Injeção com valor `DEFAULT`
+    ```java
+    @Value("${ENV_DB_URL:NENHUMA}")
+    private String dbEnvironmentVariable;
+    ```
+    
